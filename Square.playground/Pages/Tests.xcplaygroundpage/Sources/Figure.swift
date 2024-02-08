@@ -1,5 +1,5 @@
 
-import UIKit
+import Foundation
 //public уровень доступа, для Tests в playground
 
 public protocol Figure{
@@ -21,6 +21,10 @@ public class Triangle{
     private func isRightAngled(a: Double, b: Double, c: Double) -> Bool {
         return a * a + b * b == c * c
     }
+    
+    private func isValidTriangle(a: Double, b: Double, c: Double) -> Bool {
+           return a + b > c && a + c > b && b + c > a
+       }
 }
 
 public class Circle{
@@ -34,10 +38,15 @@ public class Circle{
 }
 
 extension Triangle: Figure{
+    
     public func calculateSquare() -> Double {
-        let s = (a + b + c) / 2
-        let square = isRightAngled(a: a, b: b, c: c) ? 0.5 * (a * b) : sqrt(s * (s - a) * (s - b) * (s - c))
-        return square
+        if isValidTriangle(a: a, b: b, c: c){
+            let s = (a + b + c) / 2
+            let square = isRightAngled(a: a, b: b, c: c) ? 0.5 * (a * b) : sqrt(s * (s - a) * (s - b) * (s - c))
+            return square
+        }else{
+            return 0.0
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-//: [Previous](@previous)
+
 import Foundation
 import PlaygroundSupport
 import XCTest
@@ -10,8 +10,8 @@ class FigureTests: XCTestCase {
         let triangleNonRight = Triangle(a: 4, b: 6, c: 7)
         XCTAssertEqual(triangle.calculateSquare(), 6, accuracy: 0.001)
              
-        let invalidTriangle = Triangle(a: 1, b: 2, c: 3) //тест failure: треугольник неправильный вернется nil
-        XCTAssertNil(invalidTriangle.calculateSquare())
+        let invalidTriangle = Triangle(a: 1, b: 2, c: 3) 
+        XCTAssertEqual(invalidTriangle.calculateSquare(), 0.0, accuracy: 0.001)
     }
     
     func testCircleCalculateSquare() {
