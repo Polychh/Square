@@ -38,7 +38,6 @@ public class Circle{
 }
 
 extension Triangle: Figure{
-    
     public func calculateSquare() -> Double {
         if isValidTriangle(a: a, b: b, c: c){
             let s = (a + b + c) / 2
@@ -56,8 +55,17 @@ extension Circle: Figure{
     }
 }
 
-public func calculateFigureSquare(figure: Figure) -> Double{
-    figure.calculateSquare()
+public class SquareCalculator{
+    private let fig: Figure
+    
+    public init(fig: Figure) {
+        self.fig = fig
+    }
+     public func calculateFigureSquare() -> Double{
+         fig.calculateSquare()
+    }
 }
+
+
 
 
